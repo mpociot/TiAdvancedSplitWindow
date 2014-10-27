@@ -1,0 +1,17 @@
+#
+# this is your module manifest and used by Titanium
+# during compilation, packaging, distribution, etc.
+#
+version: 1.0.0
+apiversion: 2
+description: TiAdvancedSplitWindow
+author: Your Name
+license: Specify your license
+copyright: Copyright (c) 2014 by Your Company
+
+# these should not be edited
+name: TiAdvancedSplitWindow
+moduleid: de.marcelpociot.splitwindow
+guid: fb096353-bc33-4748-b828-34e506d0b534
+platform: iphone
+minsdk: 3.4.0.GA
