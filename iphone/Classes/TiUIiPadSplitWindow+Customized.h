@@ -6,13 +6,14 @@
  */
 #import "TiViewProxy.h"
 #import "TiUIiPadSplitWindow.h"
+#import "MGSplitViewController.h"
 
-@interface TiUIiPadSplitWindow (Customized) {
+@interface TiUIiPadSplitWindow (Customized) <MGSplitViewControllerDelegate> {
 
 }
 
 -(void)setSplitPosition_:(id)arg;
 -(void)setVertical_:(id)arg;
--(void)setDragging_:(id)arg;
+-(void)setAllowsDraggingDivider_:(id)arg;
 
 @end

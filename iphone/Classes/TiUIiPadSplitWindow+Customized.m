@@ -7,7 +7,6 @@
 
 #import "TiUIiPadSplitWindow+Customized.h"
 #import "TiUtils.h"
-#import "MGSplitViewController.h"
 
 @implementation TiUIiPadSplitWindow (Customized)
 
@@ -24,10 +23,23 @@
     splitController.vertical = [TiUtils boolValue:arg def:YES];
 }
 
--(void)setDragging_:(id)arg
+
+-(void)setAllowsDraggingDivider_:(id)value
 {
-    MGSplitViewController * splitController = (MGSplitViewController *)[self controller];
-    splitController.allowsDraggingDivider = [TiUtils boolValue:arg def:NO];
+    bool allowDrag = [TiUtils boolValue:value];
+    MGSplitViewController* splitController = (MGSplitViewController*)[self controller];
+    if( allowDrag )
+    {
+        [splitController setDividerStyle:MGSplitViewDividerStylePaneSplitter];
+    } else {
+        [splitController setDividerStyle:MGSplitViewDividerStyleThin];
+    }
+}
+
+
+- (float)splitViewController:(MGSplitViewController *)svc constrainSplitPosition:(float)proposedPosition splitViewSize:(CGSize)viewSize
+{
+    return proposedPosition;
 }
 
 @end
