@@ -10,6 +10,21 @@
 
 @implementation TiUIiPadSplitWindow (Customized)
 
+UIViewController * TiAdvancedSplitWindowControllerForViewProxy(TiViewProxy * proxy);
+
+UIViewController * TiAdvancedSplitWindowControllerForViewProxy(TiViewProxy * proxy)
+{
+    [[proxy view] setAutoresizingMask:UIViewAutoresizingNone];
+    
+    //make the proper resize !
+    TiThreadPerformOnMainThread(^{
+        [proxy windowWillOpen];
+        [proxy reposition];
+        [proxy windowDidOpen];
+    },YES);
+    return [[[TiViewController alloc] initWithViewProxy:proxy] autorelease];
+}
+
 -(void)setSplitPosition_:(id)arg
 {
     NSLog(@"[INFO] Setting split position");
@@ -34,6 +49,21 @@
     } else {
         [splitController setDividerStyle:MGSplitViewDividerStyleThin];
     }
+}
+
+
+-(void)setMasterWindow_:(id)arg
+{
+    MGSplitViewController * splitController = (MGSplitViewController *)[self controller];
+    TiViewProxy* masterProxy = arg;
+    [splitController setMasterViewController:TiAdvancedSplitWindowControllerForViewProxy(masterProxy)];
+}
+
+-(void)setDetailWindow_:(id)arg
+{
+    MGSplitViewController * splitController = (MGSplitViewController *)[self controller];
+    TiViewProxy* detailProxy = arg;
+    [splitController setDetailViewController:TiAdvancedSplitWindowControllerForViewProxy(detailProxy)];
 }
 
 

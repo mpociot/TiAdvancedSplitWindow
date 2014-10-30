@@ -46,7 +46,19 @@ Wether or not you want to be able to drag the view divider.
 
 <img src="https://github.com/mpociot/TiAdvancedSplitWindow/raw/master/images/dragging.gif" />
 
+## Functions
+
+#### setDetailWindow( window )
+
+Attribute: `WindowProxy`
+
+Dynamically replaces the detail window.
+
+#### setMasterWindow( window )
 	
+Attribute: `WindowProxy`
+
+Dynamically replaces the master window.
 
 
 ## Author

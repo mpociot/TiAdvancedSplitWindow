@@ -15,5 +15,7 @@
 -(void)setSplitPosition_:(id)arg;
 -(void)setVertical_:(id)arg;
 -(void)setAllowsDraggingDivider_:(id)arg;
+-(void)setMasterWindow_:(id)arg;
+-(void)setDetailWindow_:(id)arg;
 
 @end
